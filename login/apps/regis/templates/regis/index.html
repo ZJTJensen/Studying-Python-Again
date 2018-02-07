@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'regis/style.css' %}">
+</head>
+<body>
+    <div id = "register">
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <h1>REGISTER</h1> 
+    <div class = "text">
+    <p class = "stuff">email: <input  type="text" name ="email"></p>
+    <p class = "stuff">first name: <input  type="text" name ="first_name"></p>
+    <p class = "stuff">last name: <input  type="text" name ="last_name"></p>
+    <p class = "stuff">password: <input  type="password" name ="password"></p>
+    <p class = "stuff">confirm password: <input  type="password" name ="confirm_password"></p>
+</div>
+<div class = "move">
+    <input class = "button" type="submit" value="push me">
+</div>
+</div>
+</form>
+
+<div id = "login">
+    <form action="/login" method="post">
+        {% csrf_token %}
+    <h1>LOGIN</h1>
+    <div class = "text">
+        <p class = "stuff">email: <input  type="text" name = "email"></p>
+        <p class = "stuff">password: <input  type="password" name = "password"></p>
+    </div>
+    <div class = "move">
+        <input class = "button" type="submit" value ="log in">
+    </div>
+
+
+    </form>
+</div>
+
+    {% if messages %}
+    <div id= "error">
+      {% for message in messages %}
+       <p> {{message}}</p>
+      {% endfor %}
+      </div>
+
+    {% endif %}
+
+</body>
+</html>
